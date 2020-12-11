@@ -1,5 +1,6 @@
 from flask import Flask,render_template
-app = Flask(__name__)
+import random
+from flask import url_for
 
 me = {
 	"first_name":"Malik",
@@ -20,11 +21,13 @@ me = {
 	],
 	"favourite_quotes": [
 		{"quote":"“Forge your heart into something strong. Unbreakable.”", "author":"Rell"},
-		{"quote":"The more a thing tends to be permanent, the more it tends to be lifeless.", "author":"Alan Watts"},
-		{"quote":"Logic will get you from A to Z; imagination will get you everywhere.", "author":"Albert Einstein"}
-	]
-    
-
+		{"quote":"only those you love can break your heart .", "author":"Alan Watts"},
+		{"quote":"The darker the night, the brighter the stars.", "author":"Albert Einstein"}
+	],
+	"favourite_songs":[
+		{"song":"empty crown", "singer ":"yas"},
+		{"song": "demons","singer":"imagin dragons"},
+		{"song":"unstoppable" , "singer":"sia"}	]
 }
 @app.route('/')
 def display_info():
@@ -36,7 +39,16 @@ def display_info():
 
 @app.route('/me')
 def myinfo():
+    name=me.get('first_name')+me.get('last_name')
     age=me.get('age')
     avatar=me.get('avatarURL')
     email=me.get("email")
-    return render_template("me.html")
+    return render_template("me.html",avatar=avatar,name=name,age=age,email=email)
+
+@app.route('/q')
+def display_quote():
+	ran=random.randint(1,3)
+	my_quote=me.get("favourite_quotes")
+	return render_template('quotes.html',quote=my_quote[ran])
+
+
