@@ -37,7 +37,7 @@ def display_info():
     return render_template("index.html" , name=name,description=about,menu=menu)
 
 
-@app.route('/me')
+@app.route('/me/')
 def myinfo():
     name=me.get('first_name')+me.get('last_name')
     age=me.get('age')
@@ -45,10 +45,23 @@ def myinfo():
     email=me.get("email")
     return render_template("me.html",avatar=avatar,name=name,age=age,email=email)
 
-@app.route('/q')
+@app.route('/quotes/')
 def display_quote():
 	ran=random.randint(1,3)
 	my_quote=me.get("favourite_quotes")
 	return render_template('quotes.html',quote=my_quote[ran])
 
+@app.route('/skills/')
+def display_skills():
+	my_skills=me.get('skills')
+	return render_template('skills.html',skill=my_skills)
 
+# @app.route('/songs/')
+# def disply_songs():
+#     songs=me.get('songs')
+# 	return render_template('songs.html')
+
+
+def disply_projects():
+	my_projects=me.get('projects')
+	return render_template('projects.html')
