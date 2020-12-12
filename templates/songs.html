@@ -8,7 +8,12 @@
 </head>
 
 <body>
-
+    <h1>my favourite songs</h1>
+    <ol>
+        {% for song in my_songs.song%}
+        <li>{{song}}</li>
+        {%endfor%}
+    </ol>
 </body>
 
 </html>

@@ -2,6 +2,7 @@ from flask import Flask,render_template
 import random
 from flask import url_for
 
+app = Flask(__name__)
 me = {
 	"first_name":"Malik",
 	"last_name":"Abuhammad",
@@ -20,9 +21,9 @@ me = {
 		{"name":"Resume", "description":"A description for the project.", "tags":["flask", "web application", "HTTP routes"]}
 	],
 	"favourite_quotes": [
-		{"quote":"“Forge your heart into something strong. Unbreakable.”", "author":"Rell"},
-		{"quote":"only those you love can break your heart .", "author":"Alan Watts"},
-		{"quote":"The darker the night, the brighter the stars.", "author":"Albert Einstein"}
+		{"quote":"“ Forge your heart into something strong.Unbreakable. ”", "author":"Rell"},
+		{"quote":"“ only those you love can break your heart. ”", "author":"mor"},
+		{"quote":"“ The darker the night, the brighter the stars. ”", "author":" malik"}
 	],
 	"favourite_songs":[
 		{"song":"empty crown", "singer ":"yas"},
@@ -31,11 +32,16 @@ me = {
 }
 @app.route('/')
 def display_info():
+	
     name=me.get('first_name')+me.get('last_name')
     about=me.get('description')
-    menu=['ME','skills','Projects','Quote of the Day']
-    return render_template("index.html" , name=name,description=about,menu=menu)
-
+    menu = [{"title":"ME", "url":url_for("myinfo")},
+            {"title":"Skills", "url":url_for("display_skills")},
+            {"title":"Quotes", "url":url_for("display_quote")},
+            # {"title":"projects", "url":url_for("display_projects")},
+			{"title":"songs", "url":url_for("disply_songs")}
+        ]
+    return render_template("index.html",menu = menu,name=name,description=about)
 
 @app.route('/me/')
 def myinfo():
@@ -47,7 +53,7 @@ def myinfo():
 
 @app.route('/quotes/')
 def display_quote():
-	ran=random.randint(1,3)
+	ran=random.randint(0,2)
 	my_quote=me.get("favourite_quotes")
 	return render_template('quotes.html',quote=my_quote[ran])
 
@@ -56,12 +62,10 @@ def display_skills():
 	my_skills=me.get('skills')
 	return render_template('skills.html',skill=my_skills)
 
-# @app.route('/songs/')
-# def disply_songs():
-#     songs=me.get('songs')
-# 	return render_template('songs.html')
+@app.route('/songs/')
+def disply_songs():
+	my_songs=me.get('songs')
+	return render_template('songs.html',song=my_songs)
 
-
-def disply_projects():
-	my_projects=me.get('projects')
-	return render_template('projects.html')
+def display_projects():
+	pass

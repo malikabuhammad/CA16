@@ -8,12 +8,13 @@
 </head>
 
 <body>
+    
     <h2 style="text-align: center;">{{name}}</h2>
     <h4 style="text-align: center;">{{description}}</h4>
     <ul>
-        {% for item in menu %}
-        <li>{{item}}</li>
-        {%endfor%}
+        {% for menu_item in menu %}
+        <li><a href="{{ menu_item.url }}">{{ menu_item.title|upper }}</a></li>
+        {% endfor %}
     </ul>
 </body>
 
