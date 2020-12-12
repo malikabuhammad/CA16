@@ -60,12 +60,13 @@ def display_quote():
 @app.route('/skills/')
 def display_skills():
 	my_skills=me.get('skills')
-	return render_template('skills.html',skill=my_skills)
+	return render_template('skills.html',skills=my_skills)
 
 @app.route('/songs/')
 def disply_songs():
-	my_songs=me.get('songs')
-	return render_template('songs.html',song=my_songs)
+	songs=me.get('favourite_songs')
+	return render_template('songs.html',songs=songs)
+	
 
 def display_projects():
 	pass
