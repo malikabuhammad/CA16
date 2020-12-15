@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>favourite songs</title>
-</head>
-
-<body>
-
-    <h1 style="text-align: center ">my favourite songs</h1>
-    <ul>
-        {% for song in songs %}
-
-        <li>
-            {{song.song}}
-
-        </li>
-        {% endfor %}
-
-    </ul>
-
-
-</body>
-
-</html>
+{% extends 'base.html' %} {% block main %}
+<div class="container">
+    <!-- Content of the contanier  -->
+    <h1 style="text-align: center;"> my favourite songs</h1>
+    <ul class=" list-group ">
+        <ul>
+            {% for song in songs %}
+            <li class="list-group-item ">{{song.song}} by : {{song.singer}}</li>
+            {% endfor %}
+        </ul>
+        {%endblock%}
+</div>

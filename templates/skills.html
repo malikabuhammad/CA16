@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my skills </title>
-</head>
-
-<body>
-    <h1>skills i have </h1>
-    <ul>
-        {% for skill in skills %}
-        <li>{{skill}}</li>
-        {%endfor%}
-    </ul>
-</body>
-
-</html>
+{% extends 'base.html' %} {% block main %}
+<h1 style="text-align: center;">skills i have </h1>
+<ul class=" list-group ">
+    {% for skill in skills %}
+    <li class="list-group-item ">{{skill}}</li>
+    {%endfor%}
+</ul>
+{%endblock%}

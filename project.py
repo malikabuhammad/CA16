@@ -3,6 +3,10 @@ import random
 from flask import url_for
 
 app = Flask(__name__)
+
+site = {
+    'name': 'resume'
+}
 me = {
 	"first_name":"Malik",
 	"last_name":"Abuhammad",
@@ -23,13 +27,17 @@ me = {
 	"favourite_quotes": [
 		{"quote":"“ Forge your heart into something strong.Unbreakable. ”", "author":"Rell"},
 		{"quote":"“ only those you love can break your heart. ”", "author":"mor"},
-		{"quote":"“ The darker the night, the brighter the stars. ”", "author":" malik"}
+		{"quote":"“ The darker the night, the brighter the stars. ”", "author":" malik"},
+		{"quote":"“ Tomorrow is a hope never a promise. ”", "author":" malik"}
 	],
 	"favourite_songs":[
-		{"song":"empty crown", "singer ":"yas"},
+		{"song":"empty crown", "singer":"yas"},
 		{"song": "demons","singer":"imagin dragons"},
-		{"song":"unstoppable" , "singer":"sia"}	]
+		{"song":"unstoppable" , "singer":"sia"},
+		{"song":"Bird Set Free","singer":"sia"},
+		{"song":"هزيم الرعد", "singer":"spacetoon"}]
 }
+
 @app.route('/')
 def display_info():
 	
@@ -38,12 +46,12 @@ def display_info():
     menu = [{"title":"ME", "url":url_for("myinfo")},
             {"title":"Skills", "url":url_for("display_skills")},
             {"title":"Quotes", "url":url_for("display_quote")},
-            # {"title":"projects", "url":url_for("display_projects")},
+            {"title":"projects", "url":url_for("display_projects")},
 			{"title":"songs", "url":url_for("disply_songs")}
         ]
     return render_template("index.html",menu = menu,name=name,description=about)
 
-@app.route('/me/')
+@app.route('/me')
 def myinfo():
     name=me.get('first_name')+me.get('last_name')
     age=me.get('age')
@@ -53,7 +61,7 @@ def myinfo():
 
 @app.route('/quotes/')
 def display_quote():
-	ran=random.randint(0,2)
+	ran=random.randint(0,3)
 	my_quote=me.get("favourite_quotes")
 	return render_template('quotes.html',quote=my_quote[ran])
 
@@ -67,6 +75,6 @@ def disply_songs():
 	songs=me.get('favourite_songs')
 	return render_template('songs.html',songs=songs)
 	
-
+@app.route('/projects/')
 def display_projects():
-	pass
+	return render_template('projects.html')

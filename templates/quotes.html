@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quote of the day </title>
-</head>
-
-<body>
-    <h1 style="text-align: center;">quote of the day </h1>
-    <p>{{quote['quote']}}</p>
-    <p>{{quote['author']}}</p>
-
-</body>
-
-</html>
+{% extends 'base.html' %} {% block main %}
+<h1 style="text-align: center;">quote of the day </h1>
+<figure>
+    <blockquote class="blockquote">
+        <p>{{quote['quote']}}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        {{quote['author']}} <cite title="Source Title"></cite>
+    </figcaption>
+</figure>
+<!-- without bootsrap -->
+<!-- <h1 style="text-align: center;">quote of the day </h1>
+<p>{{quote['quote']}}</p>
+<p>by :{{quote['author']}}</p> -->
+{%endblock%}

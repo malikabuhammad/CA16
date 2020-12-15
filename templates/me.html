@@ -1,19 +1,11 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> information about me </title>
-
-</head>
-
-<body>
+{% extends 'base.html' %} {% block main %}
+<div class="container">
+    <!-- Content  -->
     <h1 style="text-align:center;">my name is {{name}}</h1>
     <h2>and this is my profile picture</h2>
     <div>
-        {{avatar}}
+        <img src="{{avatar}}" class="img-thumbnail" alt="...">
     </div>
     <h1>im {{age}} years old </h1>
-</body>
-
-</html>
+    {%endblock%}
+</div>
