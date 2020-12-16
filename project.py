@@ -46,12 +46,12 @@ def display_info():
     menu = [{"title":"ME", "url":url_for("myinfo")},
             {"title":"Skills", "url":url_for("display_skills")},
             {"title":"Quotes", "url":url_for("display_quote")},
-            {"title":"projects", "url":url_for("display_projects")},
+            # {"title":"projects", "url":url_for("display_projects")},
 			{"title":"songs", "url":url_for("disply_songs")}
         ]
-    return render_template("index.html",menu = menu,name=name,description=about)
+    return render_template("base.html")
 
-@app.route('/me')
+@app.route('/me/')
 def myinfo():
     name=me.get('first_name')+me.get('last_name')
     age=me.get('age')
@@ -75,6 +75,7 @@ def disply_songs():
 	songs=me.get('favourite_songs')
 	return render_template('songs.html',songs=songs)
 	
-@app.route('/projects/')
-def display_projects():
-	return render_template('projects.html')
+# @app.route('/projects/')
+# def display_projects():
+# 	my_projects=me.get("projects")
+# 	return render_template('projects.html',project=project)
