@@ -1,0 +1,26 @@
+.border-5 {
+    border-width: 10px;
+    border-style: solid;
+}
+
+#ContentContainer {
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#MenuContainer {
+    min-width: 300px;
+    max-width: 300px;
+    font-family: 'JetBrains Mono', monospace;
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+h4 {
+    color: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+#PageContainer {
+    height: 100vh;
+}
