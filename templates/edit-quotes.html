@@ -1,0 +1,16 @@
+{% extends 'base.html'%}{% block main %}
+<form method="POST" action="{{url_for('edit_quotes')}}">
+    <class class=" container-sm ">
+        <div class="input-group ">
+            <span class="input-group-text ">type the Quoute and the author</span>
+            <input type="text " aria-label="Quote " class="form-control " id="quote " name="quote" placeholder="something ">
+            <input type="text " aria-label="Author " class="form-control " id="author " name="auther" placeholder="name ">
+        </div>
+    </class>
+    <div>
+        <!-- <button class="btn btn-primary btn-lg btn-block " type="submit "></button> -->
+        <button type="submit" class="btn btn-outline-dark">Add Quote</button>
+    </div>
+    </div>
+</form>
+{%endblock%}

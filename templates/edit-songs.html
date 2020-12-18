@@ -1,0 +1,16 @@
+{% extends 'base.html'%}{% block main %}
+<form method="POST" action="{{url_for('edit_songs')}}">
+    <class class=" container-sm ">
+        <div class="input-group ">
+            <span class="input-group-text ">type the song and the singer</span>
+            <input type="text " aria-label="Quote " class="form-control " id="song " name="song" placeholder="song ">
+            <input type="text " aria-label="Author " class="form-control " id="singer " name="singer" placeholder="singer ">
+        </div>
+    </class>
+    <div>
+        <!-- <button class="btn btn-primary btn-lg btn-block " type="submit "></button> -->
+        <button type="submit" class="btn btn-outline-dark">Add song</button>
+    </div>
+    </div>
+</form>
+{%endblock%}

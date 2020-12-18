@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,redirect,request,flash
 import random
 from flask import url_for
 
@@ -18,7 +18,7 @@ me = {
 	"age": 21,
 	"avatarURL": "https://web.facebook.com/photo?fbid=1577552849062328&set=a.104626909688270",
 	"email": "malik.shaher16@email.com",
-	"skills": ["Python", "Flask", "JavaScript", "HTML","Video editing ",  ],
+	"skills": ["Python", "Flask", "Drawing", "HTML","Video editing ",  ],
 	"projects": [
 		{"name":"Tic-Tac-Toe", "description":"A description for the project.", "tags":["functions", "control structures", "game"]},
 		{"name":"Battle of Teams", "description":"A description for the project.", "tags":["functions", "OOP"]},
@@ -38,18 +38,42 @@ me = {
 		{"song":"هزيم الرعد", "singer":"spacetoon"}]
 }
 
+
+@app.route('/editq', methods=['POST','GET'])
+def edit_quotes():
+	if request.method == 'GET':
+		return render_template('edit-quotes.html')
+	else:
+		# Read values from form
+		quote=str(request.form['quote'])
+		author=str(request.form['auther'])
+		added_quote={'qoute':quote,'author':author}
+		me['favourite_quotes'].append(added_quote)
+		return redirect(url_for('display_quote'))
+
+@app.route('/addsong', methods=['GET','POST'])
+def edit_songs():
+	if request.method == 'GET':
+		return render_template('edit-songs.html')
+	else:
+		# Read values from form
+		song=str(request.form['song'])
+		singer=str(request.form['singer'])
+		added_song={'song':song,'singer':singer}
+		me['favourite_songs'].append(added_song)
+		return redirect(url_for('disply_songs'))
+
 @app.route('/')
-def display_info():
-	
+def display_info():	
     name=me.get('first_name')+me.get('last_name')
     about=me.get('description')
-    menu = [{"title":"ME", "url":url_for("myinfo")},
+    my_menu = [{"title":"ME", "url":url_for("myinfo")},
             {"title":"Skills", "url":url_for("display_skills")},
             {"title":"Quotes", "url":url_for("display_quote")},
-            # {"title":"projects", "url":url_for("display_projects")},
+            {"title":"projects", "url":url_for("display_projects")},
 			{"title":"songs", "url":url_for("disply_songs")}
         ]
-    return render_template("base.html")
+    return render_template("base.html", menu=my_menu)
 
 @app.route('/me/')
 def myinfo():
@@ -61,7 +85,7 @@ def myinfo():
 
 @app.route('/quotes/')
 def display_quote():
-	ran=random.randint(0,3)
+	ran=random.randint(0,len(me.get('favourite_quotes')))
 	my_quote=me.get("favourite_quotes")
 	return render_template('quotes.html',quote=my_quote[ran])
 
@@ -75,7 +99,7 @@ def disply_songs():
 	songs=me.get('favourite_songs')
 	return render_template('songs.html',songs=songs)
 	
-# @app.route('/projects/')
-# def display_projects():
-# 	my_projects=me.get("projects")
-# 	return render_template('projects.html',project=project)
+@app.route('/projects/')
+def display_projects():
+	my_projects=me.get("projects")
+	return render_template('my-projects.html',project=my_projects)

@@ -9,13 +9,13 @@
     <meta name="description" content="my cv">
     <meta name="author" content="malik abuhammad">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='favicon.ico')}}">
-    <link type="text/css" href="{{url_for('static',filename='css/s.css')}}" rel="stylesheet">
 
     <!-- page title -->
     <title>{% block title %}Myresume{% endblock %}</title>
 
     <!-- styles block -->
 
+    <link type="text/css" href="{{url_for('static',filename='css/s.css')}}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1 " crossorigin="anonymous ">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons " rel="stylesheet ">
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap " rel="stylesheet ">
@@ -42,7 +42,7 @@
                         <a class=" nav-link " href="{{ url_for( 'display_skills')}} ">skills </a>
                         <a class="nav-link " href="{{ url_for( 'display_quote')}} ">Quots</a>
                         <a class="nav-link " href="{{ url_for( 'disply_songs')}} ">Songs</a>
-                        <a class="nav-link " href=" ">projects</a>
+                        <a class="nav-link " href="{{url_for('display_projects')}}">projects</a>
                     </div>
                 </div>
         </nav>
@@ -50,9 +50,9 @@
 
     <!-- page in a container -->
     <div id="PageContainer " class="d-flex ">
-        <div id="MenuContainer " class=" text-light d-lg-flex flex-column collapse " style="background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);">
+        <div id="MenuContainer " class=" text-light d-lg-flex flex-column collapse " style=" background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); ">
             <!-- menu contanier -->
-            <div class="MenuContainerHeader d-flex flex-column ">
+            <div class=" MenuContainerHeader d-flex flex-column ">
                 <div class=" p-4 mx-5 ">
                     <!-- fluid keeps on changing -->
                     <!-- mt margin top -->
@@ -67,17 +67,16 @@
                 </div>
             </div>
             <div class="MenuContainerItems h-100 d-flex flex-column mt-5 ">
-                <a class=" nav-link href=" #SectionHome " class="badge badge-dark text-light mx-1 my-1 "><i class=" text-danger bx bx-home-smile p-2 "></i>Home</a>
-                        <a class=" nav-link href=" #SectionAbout " class="badge badge-dark text-light mx-1 my-1 "><i class="text-info bx bx-user p-2 "></i>edit About</a>
-                <a class=" nav-link href=" Songs " class="badge badge-dark text-light mx-1 my-1 "><i class="text-secondary bx bx-file-blank p-2 "></i>edit Songs</a>
-                        <a class=" nav-link href=" skills " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-brain p-2 "></i>edit Skills</a>
-                <a class=" nav-link href=" quotes " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-brain p-2 "></i>edit Quots</a>
-                        <a class=" nav-link href=" projects " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-brain p-2 "></i>edit projects</a>
+                <a class=" nav-link " href=" # " class=" badge badge-dark text-light mx-1 my-1 "><i class=" text-danger bx bx-home-smile p-2 "></i>Home</a>
+                <a class=" nav-link " href=" # " class="badge badge-dark text-light mx-1 my-1 "><i class="text-info bx bx-user p-2 "></i>edit About</a>
+                <a class=" nav-link " href=" # " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-cloud-lightning p-2 "></i>add Skills</a>
+                <a class=" nav-link " href="/editq " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-brain p-2 "></i>edit Quots</a>
+                <a class=" nav-link " href="/addsong " class="badge badge-dark text-light mx-1 my-1 "><i class="text-default bx bx-music p-2 "></i>add songs</a>
 
             </div>
 
             <div class=" MenuContainerFooter align-self-center text-center ">
-                Designed by Me.<br>BS
+                Designed by Me.<br>Malik
             </div>
 
 
